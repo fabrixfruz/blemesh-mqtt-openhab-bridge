@@ -7,7 +7,7 @@
 
     Integrazione con modelli Generic OnOff Client
 
-2 Binding con Application Key
+2. Binding con Application Key
 
     Binding del modello OnOff Client con la stessa AppKey usata nel Server (lampadina)
 
