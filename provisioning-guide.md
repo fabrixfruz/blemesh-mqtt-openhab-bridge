@@ -10,7 +10,7 @@
 ## 🔧 Requisiti
 
 - App [nRF Mesh](https://play.google.com/store/apps/details?id=no.nordicsemi.android.nrfmeshprovisioner)
-- Lampadina Sylvania Smart+ non provisionata
+- Lampadina Sylvania Smart+ non provisionata (Sylvania Smart+ 60A19CBLE Bluetooth)
 - ESP32 (opzionale, per provisioning automatico)
 
 ## 📝 Passaggi
