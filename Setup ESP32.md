@@ -1,4 +1,4 @@
-##🔧 1. Installa tool ESP-IDF
+## 🔧 1. Installa tool ESP-IDF
 ESP32 supporta Bluetooth Mesh stack ufficiale via ESP-IDF.
 
 Scarica l’ultima versione da esp-idf
