@@ -35,7 +35,7 @@ Dopo provisioning e binding:
 - Premi `ON` / `OFF`
 - La lampadina dovrebbe reagire
 
-
+---
 Con questi file puoi:
 
 Provisionare la lampadina
