@@ -13,3 +13,14 @@ idf.py build
 idf.py flash
 idf.py monitor
 ```
+
+# Primo test
+Provisiona la lampadina con nRF Mesh (vedi docs/provisioning-guide.md)
+
+Imposta SYLVANIA_ADDR in mesh_config.h
+
+Ricompila e flasha
+
+Osserva la lampadina accendersi e spegnersi automaticamente
+---
+
