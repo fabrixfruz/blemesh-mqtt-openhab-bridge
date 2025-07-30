@@ -34,6 +34,78 @@
 
 ---
 
+## 🧮 Generic OnOff
+### 🔘 Generic OnOff Model (SIG Model ID: 0x1000 / 0x1001)
+
+| Opcode     | Funzione           | Payload                          | Risposta prevista      |
+|------------|--------------------|----------------------------------|-------------------------|
+| `0x82 0x01` | OnOff Get          | —                                | OnOff Status            |
+| `0x82 0x02` | OnOff Set          | `1 byte` (0x00=OFF / 0x01=ON) + optional `TID` | OnOff Status (acknowledged) |
+| `0x82 0x03` | OnOff Set Unack.   | come sopra                       | Nessuna risposta        |
+| `0x82 0x04` | OnOff Status       | `1 byte` (stato attuale)         | —                       |
+
+## 🌗 Generic Level Model (SIG Model ID: 0x1002 / 0x1003)
+
+| Opcode     | Funzione           | Payload                                    | Risposta prevista      |
+|------------|--------------------|--------------------------------------------|-------------------------|
+| `0x82 0x05` | Level Get          | —                                          | Level Status            |
+| `0x82 0x06` | Level Set          | `2 byte` (int16_t livello) + `TID`        | Level Status            |
+| `0x82 0x07` | Level Set Unack.   | come sopra                                 | Nessuna risposta        |
+| `0x82 0x08` | Level Status       | `2 byte` livello attuale                   | —                       |
+
+
+## 💡 Light Lightness Server (SIG Model ID: 0x1300 / 0x1302)
+
+| Opcode     | Funzione           | Payload                                    | Risposta prevista      |
+|------------|--------------------|--------------------------------------------|-------------------------|
+| `0x82 0x4B` | Lightness Get      | —                                          | Lightness Status        |
+| `0x82 0x4C` | Lightness Set      | `2 byte` lightness + `TID`                | Lightness Status        |
+| `0x82 0x4D` | Lightness Set Unack. | come sopra                               | Nessuna risposta        |
+| `0x82 0x4E` | Lightness Status   | `2 byte` valore attuale + opzionale target/delay | —                |
+
+## 💡 Light CTL Model (SIG Model ID: 0x1303 / Client: 0x1305)
+
+### 💡 Light CTL Model
+
+| Opcode     | Funzione                  | Payload                                                                      | Risposta prevista        |
+|------------|---------------------------|-------------------------------------------------------------------------------|---------------------------|
+| `0x82 0x5D` | CTL Get                   | —                                                                             | CTL Status                |
+| `0x82 0x5E` | CTL Set                   | `2B Lightness` + `2B Temperature (Kelvin)` + `2B Delta UV` + `TID`           | CTL Status                |
+| `0x82 0x5F` | CTL Set Unack.            | come sopra                                                                   | Nessuna risposta          |
+| `0x82 0x60` | CTL Status                | Lightness + Temperature + Delta UV + opzionale Target e Transizione         | —                         |
+| `0x82 0x61` | CTL Temperature Get       | —                                                                             | CTL Temperature Status    |
+| `0x82 0x62` | CTL Temperature Range Get | —                                                                             | CTL Temperature Range Status |
+| `0x82 0x63` | CTL Default Get           | —                                                                             | CTL Default Status        |
+| `0x82 0x64` | CTL Temperature Status    | Temperatura attuale + Target + Transizione                                   | —                         |
+| `0x82 0x65` | CTL Default Status        | Valori di default per Lightness, Temp, DeltaUV                               | —                         |
+| `0x82 0x66` | CTL Temperature Range Status | Min e Max valori consentiti Kelvin                                          | —                         |
+| `0x82 0x67` | CTL Default Set           | Imposta valori di default                                                    | Nessuna o Default Status  |
+| `0x82 0x68` | CTL Temperature Range Set | Imposta Range Kelvin                                                         | Nessuna o Range Status    |
+
+🎨 Light HSL Model (SIG Model ID: 0x1307 / Client: 0x1309)
+
+### 🎨 Light HSL Model
+
+| Opcode     | Funzione                  | Payload                                                           | Risposta prevista        |
+|------------|---------------------------|--------------------------------------------------------------------|---------------------------|
+| `0x82 0x69` | HSL Get                   | —                                                                  | HSL Status                |
+| `0x82 0x6A` | HSL Set                   | `2B Hue` + `2B Saturation` + `2B Lightness` + `TID`                | HSL Status                |
+| `0x82 0x6B` | HSL Set Unack.            | come sopra                                                        | Nessuna risposta          |
+| `0x82 0x6C` | HSL Status                | Valori attuali + Target + Transizione                             | —                         |
+| `0x82 0x6D` | HSL Target Get            | —                                                                  | HSL Target Status         |
+| `0x82 0x6E` | HSL Target Status         | Valori obiettivo                                                   | —                         |
+| `0x82 0x6F` | HSL Default Get           | —                                                                  | HSL Default Status        |
+| `0x82 0x70` | HSL Default Status        | Hue, Sat, Lightness predefiniti                                   | —                         |
+| `0x82 0x71` | HSL Range Get             | —                                                                  | HSL Range Status          |
+| `0x82 0x72` | HSL Range Status          | HueMin/HueMax + SatMin/SatMax                                     | —                         |
+| `0x82 0x73` | HSL Default Set           | Hue + Sat + Lightness di default                                  | Nessuna o Default Status  |
+| `0x82 0x74` | HSL Range Set             | Imposta limiti per Hue e Saturation                               | Nessuna o Range Status    |
+
+
+
+
+
+
 Made with 🔧 curiosity by [@FabrixFruz](https://github.com/fabrixfruz)  
 🇮🇹 Progetto open per maker e hacker
 
