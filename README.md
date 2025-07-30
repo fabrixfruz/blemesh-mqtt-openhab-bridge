@@ -1,89 +1,36 @@
-# BLE Mesh MQTT Bridge for OpenHAB 💡🔗
+## 🔶 BLE Mesh Models – Generic & Lighting / Modelli BLE Mesh – Generic & Lighting
 
-Controllo lampadine smart BLE Mesh via ESP32 + MQTT → OpenHAB.  
-ESP32 agisce da client Bluetooth Mesh e riceve comandi dal broker MQTT, trasformandoli in pacchetti BLE Mesh (OnOff, Status, ecc.).
+### 🧩 Generic Models / Modelli Generic
 
-Smart lighting control over Bluetooth Mesh using ESP32 with MQTT bridge for OpenHAB automation.
+| Model Name / Nome Modello               | Function / Funzione                                     | SIG Model ID | Typical Value Range / Range Valori Tipici         |
+|-----------------------------------------|---------------------------------------------------------|:------------:|----------------------------------------------------|
+| Configuration Server                    | Sets up Mesh network configuration                      | 0x0000       | —                                                  |
+| Health Server                           | Reports node health status                              | 0x0002       | Fault bitmap                                       |
+| Health Client                           | Queries Health Server nodes                             | 0x0003       | —                                                  |
+| Generic OnOff Server                    | Maintains On/Off device state                           | 0x1000       | 0 (OFF), 1 (ON)                                    |
+| Generic OnOff Client                    | Sends On/Off commands                                   | 0x1001       | 0 (OFF), 1 (ON)                                    |
+| Generic Level Server                    | Represents general “level” (e.g., brightness)           | 0x1002       | -32768 to +32767 (int16_t)                         |
+| Generic Level Client                    | Sends Level Set/Get commands                           | 0x1003       | -32768 to +32767 (int16_t)                         |
+| Generic Default Transition Time Server  | Controls default transition duration                    | 0x1004       | 0x00–0x7F                                          |
+| Generic Power OnOff Server              | Controls behavior after power-up                        | 0x1006       | 0x00 (OFF), 0x01 (ON), 0x02 (RESTORE)              |
+| Generic Power OnOff Setup Server        | Configures Power OnOff settings                         | 0x1007       | Same as above / Come sopra                         |
 
-![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Platform: ESP32](https://img.shields.io/badge/platform-ESP32-blue)
-![BLE Mesh](https://img.shields.io/badge/protocol-BLE%20Mesh-brightgreen)
-![MQTT](https://img.shields.io/badge/integration-MQTT-orange)
-![OpenHAB](https://img.shields.io/badge/automation-OpenHAB-yellow)
+### 💡 Lighting Models / Modelli Lighting
 
----
+| Model Name / Nome Modello               | Function / Funzione                                     | SIG Model ID | Typical Value Range / Range Valori Tipici         |
+|-----------------------------------------|---------------------------------------------------------|:------------:|----------------------------------------------------|
+| Light Lightness Server                  | Controls light brightness                              | 0x1300       | 0–65535 (uint16_t)                                 |
+| Light Lightness Client                  | Sends brightness commands                              | 0x1302       | 0–65535                                            |
+| Light Lightness Setup Server            | Configures default & range values                      | 0x1301       | default/range → uint16_t                           |
+| Light CTL Server                        | Controls lightness + color temperature                 | 0x1303       | Light: 0–65535 / Temp: 800–20000K                  |
+| Light CTL Temperature Server            | Exposes only color temperature                         | 0x1306       | Kelvin range (as configured)                      |
+| Light CTL Setup Server                  | Sets CTL range & default values                        | 0x1304       | Kelvin range / default                             |
+| Light HSL Server                        | Controls Hue, Saturation, Lightness                    | 0x1307       | Hue/Sat/Light: 0–65535                             |
+| Light HSL Hue Server                    | Controls Hue (color tint)                              | 0x130A       | 0–65535                                            |
+| Light HSL Saturation Server             | Controls color saturation                              | 0x130B       | 0 (gray) – 65535 (pure color)                      |
+| Light HSL Lightness Server              | Controls lightness within HSL                          | 0x130C       | 0–65535                                            |
+| Light HSL Setup Server                  | Configures range/default for HSL                       | 0x1308       | default / range → uint16_t                         |
 
-## 📦 Funzionalità / Features
-
-- ✅ Controllo lampadina Sylvania Smart+ BLE Mesh
-- 🔁 Invio comandi On/Off via MQTT (`home/light`)
-- 🧠 Pubblicazione stato lampadina via MQTT (`home/light/status`)
-- 🔧 Provisioning tramite app nRF Mesh
-- 🌐 Bridge con Mosquitto e integrazione OpenHAB
-
----
-
-## 🧰 Setup rapido / Quick Setup
-
-```bash
-git clone https://github.com/fabrixfruz/blemesh-mqtt-openhab-bridge
-cd esp32_code
-idf.py set-target esp32
-idf.py build
-idf.py flash
-idf.py monitor
-
-```
----
-
-## 📡 MQTT Topics
-
-| Topic                | Payload            | Azione / Action               |
-|---------------------|--------------------|-------------------------------|
-| `home/light`        | `"ON"` / `"OFF"`   | Accende/spegne la lampadina   |
-| `home/light`        | `"STATUS"`         | Richiede stato BLE            |
-| `home/light/status` | `"ON"` / `"OFF"`   | Stato ritornato via ESP32     |
-
----
-
-## 🏠 Integrazione OpenHAB
-
-📁 `openhab_config/`:
-- `lampadina.items` → Definisce lo switch virtuale
-- `mqtt.rules` → Regole di automazione MQTT ↔ BLE
-- `things.json` → Configurazione MQTT broker
-
----
-
-## 📘 Documentazione / Docs
-
-📂 `docs/`:
-- `overview.md` → Architettura e flusso dati
-- `provisioning-guide.md` → Come provisionare la lampadina con nRF Mesh
-- `mqtt-bridge.md` → Dettagli bridge ESP32 ↔ MQTT
-
----
-
-## 🎬 Demo / Screenshot
-
-*(Puoi aggiungere una GIF o screenshot qui)*  
-![BLE Mesh provisioning](extras/nrf_mesh_map.png)  
-📺 [Video demo](https://youtu.be/link-demo)
-
----
-
-## 🧪 Roadmap
-
-- Web UI embedded su ESP32
-- Dashboard Node-RED
-- Supporto multi-hop BLE Mesh
-- OTA firmware & telemetria MQTT
-
----
-
-## 📜 License
-
-MIT — Open hardware + software. Fork, migliora, condividi!
 
 ---
 
