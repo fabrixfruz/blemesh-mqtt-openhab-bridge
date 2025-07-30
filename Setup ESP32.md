@@ -67,12 +67,5 @@ Converti MQTT → comando Mesh
 
 → La tua lampadina sarà Mesh + MQTT hybrid 🧠
 
----
 
-## 🔍 Mappa Opcode → Funzione (Bluetooth Mesh)
-Funzione	Opcode HEX	Tipo messaggio	Note sul comportamento
-Accensione	0x8202	Set	OnOff = 0x01, TID richiesto
-Spegnimento	0x8202	Set	OnOff = 0x00, TID richiesto
-Accensione (ack)	0x8203	Set Unacknowledged	Non richiede risposta, utile per comandi rapidi
-Stato attuale richiesta	0x8201	Get	Richiede risposta da OnOff Server
-Stato attuale risposta	0x8204	Status	Ritornato come risposta da lampadina (On=1, Off=0)
+
