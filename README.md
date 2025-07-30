@@ -27,7 +27,7 @@
    Ecco uno snippet semplificato:
 
 ```
-   esp_ble_mesh_generic_client_set_state_t set;
+esp_ble_mesh_generic_client_set_state_t set;
 set.onoff_set.op_en = false;
 set.onoff_set.onoff = 0x01;  // 0x01 = ON, 0x00 = OFF
 set.onoff_set.tid = 0x00;
