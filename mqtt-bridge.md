@@ -13,7 +13,7 @@ ESP32 riceve comandi MQTT e li trasforma in pacchetti BLE Mesh compatibili.
 
 ## 🔐 Struttura codice ESP32
 
-```c
+
 void mqtt_event_handler(...) {
   if (topic == "home/light") {
     if (payload == "ON") send_on();
@@ -21,3 +21,18 @@ void mqtt_event_handler(...) {
     else if (payload == "STATUS") request_status();
   }
 }
+
+
+## 🏠 Integrazione con OpenHAB
+Crea uno Switch item MQTT
+
+Scrivi una regola per inviare comandi MQTT su evento
+
+Visualizza lo stato tramite topic home/light/status
+
+## 🚀 Estensioni
+Auto-discovery MQTT (Home Assistant)
+
+Logging storico delle accensioni
+
+Integrazione con Node-RED
