@@ -3,9 +3,9 @@
 
 ## 🧭 `provisioning-guide.md` — Provisioning con nRF Mesh
 
-```markdown
+
 # Guida al Provisioning BLE Mesh con nRF Mesh 📲
-```
+
 
 ## 🔧 Requisiti
 
