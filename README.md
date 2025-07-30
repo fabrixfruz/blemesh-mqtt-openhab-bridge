@@ -26,7 +26,7 @@ Smart lighting control over Bluetooth Mesh using ESP32 with MQTT bridge for Open
 ## 🧰 Setup rapido / Quick Setup
 
 ```bash
-git clone https://github.com/<tuo-username>/blemesh-mqtt-openhab-bridge
+git clone https://github.com/fabrixfruz/blemesh-mqtt-openhab-bridge
 cd esp32_code
 idf.py set-target esp32
 idf.py build
@@ -87,7 +87,7 @@ MIT — Open hardware + software. Fork, migliora, condividi!
 
 ---
 
-Made with 🔧 curiosity by [@Fabrizio](https://github.com/<tuo-username>)  
+Made with 🔧 curiosity by [@Fabrizio](https://github.com/fabrixfruz)  
 🇮🇹 Progetto open per maker e hacker
 
 
