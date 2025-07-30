@@ -1,31 +1,53 @@
-# blemesh-mqtt-openhab-bridge
-ESP32 client BLE Mesh + MQTT bridge per Smart Lighting
+## 🧩 Obiettivo: Simulare un client Mesh con ESP32 per controllo automatico della lampadina
 
-# BLE Mesh MQTT Bridge for OpenHAB 💡🔗
+## 🎯 Fasi del workflow
+1. Setup ESP32 come nodo client
 
-Controllo lampadine smart BLE Mesh via ESP32 + bridge MQTT per automazione OpenHAB.  
-ESP32 agisce come client BLE Mesh → riceve comandi da broker MQTT e li trasforma in pacchetti Mesh (OnOff, Status...).
+    Provisioning (separato o statico)
 
-Smart lighting control over Bluetooth Mesh using ESP32 with MQTT bridge for OpenHAB automation.
+    Integrazione con modelli Generic OnOff Client
 
----
+2 Binding con Application Key
 
-## 📦 Features / Funzionalità
+    Binding del modello OnOff Client con la stessa AppKey usata nel Server (lampadina)
 
-- ✅ Controllo lampadina Sylvania Smart+ BLE Mesh
-- 🔁 Invio comandi On/Off via MQTT topic
-- 🧠 Pubblicazione dello stato della lampadina (Status opcode)
-- 📡 Bridge con Mosquitto + OpenHAB (config inclusa)
-- 📲 ESP32 con stack BLE Mesh ufficiale + esp-mqtt
-- 🌐 Progetto completamente open-source, documentato in italiano e inglese
+3. Configurazione addressing
 
----
+    Pubblica verso l’Unicast address della lampadina
 
-## 🧰 Setup rapido
+    (Opzione: usa un Group address se vuoi scalare)
 
-```bash
-git clone https://github.com/<tuo-username>/blemesh-mqtt-openhab-bridge
-cd esp32_code
-idf.py set-target esp32
-idf.py build
-idf.py flash
+4. Invio comando OnOffSet
+
+   Sia manuale da codice, sia ciclico/timed
+
+   Visual feedback tramite log seriale o LED ESP32
+
+## 💻 Codice ESP32 base per invio comando
+   Ecco uno snippet semplificato:
+
+```
+   esp_ble_mesh_generic_client_set_state_t set;
+set.onoff_set.op_en = false;
+set.onoff_set.onoff = 0x01;  // 0x01 = ON, 0x00 = OFF
+set.onoff_set.tid = 0x00;
+
+esp_ble_mesh_model_t *client_model = get_generic_onoff_client_model();  // tuo puntatore al modello
+esp_ble_mesh_msg_ctx_t ctx = {
+  .net_idx = net_idx,
+  .app_idx = app_idx,
+  .addr = unicast_addr_lampadina,
+  .send_ttl = TTL,
+  .send_rel = false
+};
+
+esp_ble_mesh_generic_client_set_state(client_model, &ctx, &set);
+```
+## 📌 Puoi sostituire onoff = 0x00 per spegnere e schedulare via timer o evento GPIO.
+
+## 🛠️ Debug e Log
+   Log via seriale per conferma di invio
+
+   LED ESP per mostrare stato di comando (ON/OFF)
+
+   Sniffing con nRF Connect per verificare pacchetti
