@@ -5,6 +5,7 @@
 
 ```markdown
 # Guida al Provisioning BLE Mesh con nRF Mesh 📲
+```
 
 ## 🔧 Requisiti
 
