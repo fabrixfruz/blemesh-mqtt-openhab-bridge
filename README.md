@@ -43,7 +43,7 @@ esp_ble_mesh_msg_ctx_t ctx = {
 
 esp_ble_mesh_generic_client_set_state(client_model, &ctx, &set);
 ```
-## 📌 Puoi sostituire onoff = 0x00 per spegnere e schedulare via timer o evento GPIO.
+📌 Puoi sostituire onoff = 0x00 per spegnere e schedulare via timer o evento GPIO.
 
 ## 🛠️ Debug e Log
    Log via seriale per conferma di invio
