@@ -34,3 +34,14 @@ Dopo provisioning e binding:
 - Vai nel modello → `Set OnOff`
 - Premi `ON` / `OFF`
 - La lampadina dovrebbe reagire
+
+
+Con questi file puoi:
+
+Provisionare la lampadina
+
+Configurare l’indirizzo in mesh_config.h
+
+Compilare e flashare l’ESP32
+
+Vedere la lampadina accendersi/spegnersi automaticamente
