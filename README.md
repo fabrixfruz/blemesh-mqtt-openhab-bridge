@@ -87,7 +87,7 @@ MIT — Open hardware + software. Fork, migliora, condividi!
 
 ---
 
-Made with 🔧 curiosity by [@Fabrizio](https://github.com/fabrixfruz)  
+Made with 🔧 curiosity by [@FabrixFruz](https://github.com/fabrixfruz)  
 🇮🇹 Progetto open per maker e hacker
 
 
