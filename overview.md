@@ -13,6 +13,8 @@ Il progetto collega tre mondi:
                              ↑
                          Status opcode → MQTT → OpenHAB
 
+```
+---
 ## 📦 Componenti principali
 ESP32 con modello Generic OnOff Client
 
